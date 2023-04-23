@@ -1,6 +1,7 @@
 "use client"
 
 import React from "react"
+import { Analytics } from "@vercel/analytics/react"
 import { SessionProvider } from "next-auth/react"
 import { ThemeProvider } from "next-themes"
 import { SpotifyProvider } from "~/context/spotify-context"
@@ -17,6 +18,7 @@ export default function Providers({ children }: ProvidersProps) {
           <SpotifyProvider>{children}</SpotifyProvider>
         </ThemeProvider>
       </SessionProvider>
+      <Analytics />
     </>
   )
 }
