@@ -70,9 +70,8 @@ export default function CreatePlaylistButton({
     <>
       <Button
         size="lg"
-        variant="outline-hover-solid"
         className={cn(
-          "fixed right-4 top-4 h-14 text-lg md:right-6 md:top-6",
+          "fixed right-4 top-4 h-14 text-lg shadow md:right-6 md:top-6",
           className
         )}
         onClick={handleClick}
