@@ -60,10 +60,11 @@ export default function CreatePlaylistButton({
             body: JSON.stringify({
               image: image.replace("data:image/png;base64,", ""),
             }),
+          }).then(() => {
+            setLoading(false)
+            setIsOpen(true)
           })
         })
-        setLoading(false)
-        setIsOpen(true)
       })
   }
 
