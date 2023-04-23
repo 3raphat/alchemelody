@@ -42,15 +42,6 @@ export default function CreatePlaylistButton({
     })
       .then((res) => res.json())
       .then((data) => {
-        fetch(`/api/add-playlist-cover?playlist_id=${data.id}`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            image: image.replace("data:image/png;base64,", ""),
-          }),
-        })
         setPlaylistUrl(data.external_urls.spotify)
         fetch(`/api/add-to-playlist?playlist_id=${data.id}`, {
           method: "POST",
@@ -60,6 +51,16 @@ export default function CreatePlaylistButton({
           body: JSON.stringify({
             uris: recommendations.map((track: any) => track.uri),
           }),
+        }).then(() => {
+          fetch(`/api/add-playlist-cover?playlist_id=${data.id}`, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              image: image.replace("data:image/png;base64,", ""),
+            }),
+          })
         })
         setLoading(false)
         setIsOpen(true)
