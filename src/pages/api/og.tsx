@@ -1,4 +1,5 @@
 import { ImageResponse } from "@vercel/og"
+import Balancer from "react-wrap-balancer"
 
 export const config = {
   runtime: "experimental-edge",
@@ -19,7 +20,7 @@ export default async function handler() {
     (
       <div tw="h-full w-full flex flex-col justify-center items-center bg-[#271a41] text-[#e4cb7f]">
         <div tw="text-6xl font-bold">Alchemelody</div>
-        <div tw="font-normal mt-4">
+        <div tw="text-xl font-normal mt-4">
           Unleash the Magic of Music with Alchemelody - Your Ultimate Source for
           Curated Spotify Playlists
         </div>
