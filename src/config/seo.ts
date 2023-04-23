@@ -4,6 +4,7 @@ import { siteConfig } from "~/config/site"
 export const SEO: Metadata = {
   title: siteConfig.name,
   description: siteConfig.description,
+  keywords: ["spotify", "playlist", "recommendation", "music", "generator"],
   openGraph: {
     type: "website",
     url: siteConfig.url,
