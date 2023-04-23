@@ -1,8 +1,7 @@
 import { ImageResponse } from "@vercel/og"
-import Balancer from "react-wrap-balancer"
 
 export const config = {
-  runtime: "experimental-edge",
+  runtime: "edge",
 }
 
 const fontRegular = fetch(
