@@ -1,95 +1,56 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client"
+
+import Image from "next/image"
+import { useRouter } from "next/navigation"
+import { signIn, useSession } from "next-auth/react"
+import {
+  PageHeader,
+  PageHeaderDescription,
+  PageHeaderHeading,
+  PageHeaderText,
+} from "~/components/page-header"
+import { Button } from "~/components/ui/button"
 
 export default function Home() {
+  const { data: session, status } = useSession()
+  const router = useRouter()
+  const handleClick = async () => {
+    if (session) {
+      return router.push("/alchemy")
+    }
+    await signIn("spotify", { callbackUrl: "/alchemy" })
+  }
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
+    <div className="flex h-screen items-center justify-center">
+      <div className="container flex flex-col items-center justify-between gap-6 lg:flex-row">
         <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+          <PageHeader>
+            <PageHeaderHeading>Alchemelody</PageHeaderHeading>
+            <PageHeaderText className="text-primary-lighter">
+              /ˌælkəˈmɛlədi/
+            </PageHeaderText>
+            <PageHeaderDescription>
+              Discover your new favorite tunes with Alchemelody — a curated
+              Spotify playlist website that offers a diverse range of music
+              genres and moods to suit every occasion.
+            </PageHeaderDescription>
+          </PageHeader>
+          <Button variant="solid-hover-outline" size="lg" onClick={handleClick}>
+            Let&apos;s alchemy
+          </Button>
+        </div>
+
+        <div className="relative aspect-square w-full max-w-xl lg:max-w-2xl">
+          <Image
+            src="/images/alchemy_transparent.png"
+            alt=""
+            priority
+            quality={100}
+            style={{ objectFit: "contain" }}
+            fill
+          />
         </div>
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </div>
   )
 }

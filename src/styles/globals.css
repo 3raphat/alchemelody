@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 253 43% 18%;
+    --background-darker: 217 54% 11%;
+    --foreground: 45 65% 70%;
+
+    --muted: 7 7% 49%;
+    --muted-foreground: 7 7% 49%;
+
+    --popover: 253 43% 18%;
+    --popover-foreground: 45 65% 70%;
+
+    --card: 253 43% 18%;
+    --card-foreground: 45 65% 70%;
+
+    --border: 45 65% 70%;
+    --input: 45 65% 70%;
+
+    --primary: 45 65% 70%;
+    --primary-lighter: 53 72% 87%;
+    --primary-foreground: 253 43% 18%;
+
+    --secondary: 26 33% 65%;
+    --secondary-foreground: 253 43% 18%;
+
+    --accent: 175 23% 55%;
+    --accent-foreground: 53 72% 87%;
+
+    --destructive: 350 94% 59%;
+    --destructive-foreground: 253 43% 18%;
+
+    --ring: 175 23% 55%;
+
+    --radius: 0;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-gradient-to-br from-background to-background-darker text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    appearance: textfield;
+  }
+}
