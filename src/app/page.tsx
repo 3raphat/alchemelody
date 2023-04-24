@@ -12,7 +12,7 @@ import {
 import { Button } from "~/components/ui/button"
 
 export default function Home() {
-  const { data: session, status } = useSession()
+  const { data: session } = useSession()
   const router = useRouter()
   const handleClick = async () => {
     if (session) {
