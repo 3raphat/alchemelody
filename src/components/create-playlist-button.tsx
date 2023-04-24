@@ -1,4 +1,5 @@
 import React from "react"
+import confetti from "canvas-confetti"
 import { useSession } from "next-auth/react"
 import { Button, ButtonProps, buttonVariants } from "~/components/ui/button"
 import {
@@ -61,6 +62,11 @@ export default function CreatePlaylistButton({
               image: image.replace("data:image/png;base64,", ""),
             }),
           }).then(() => {
+            confetti({
+              particleCount: 100,
+              spread: 70,
+              origin: { y: 0.6 },
+            })
             setLoading(false)
             setIsOpen(true)
           })
