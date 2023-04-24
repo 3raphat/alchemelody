@@ -40,7 +40,7 @@ export function UserNav() {
         <a
           href="https://www.spotify.com/account/overview/"
           target="_blank"
-          rel="noreferrer"
+          rel="noopener noreferrer"
         >
           <DropdownMenuItem>
             <User className="mr-2 h-4 w-4" />

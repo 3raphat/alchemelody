@@ -97,7 +97,7 @@ export default function CreatePlaylistButton({
             <a
               href={playlistUrl}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className={cn(buttonVariants({ variant: "default", size: "sm" }))}
             >
               Open Spotify

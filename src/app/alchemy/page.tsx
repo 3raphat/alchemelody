@@ -53,7 +53,7 @@ export default function Page({}: PageProps) {
                       <a
                         href={track.external_urls.spotify}
                         target="_blank"
-                        rel="noreferrer"
+                        rel="noopener noreferrer"
                         className="hover:text-primary-lighter"
                       >
                         {track.name}
@@ -66,7 +66,7 @@ export default function Page({}: PageProps) {
                             key={artist.id}
                             href={artist.external_urls.spotify}
                             target="_blank"
-                            rel="noreferrer"
+                            rel="noopener noreferrer"
                             className="hover:text-primary-lighter"
                           >
                             {artist.name}
