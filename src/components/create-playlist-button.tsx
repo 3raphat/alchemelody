@@ -1,15 +1,17 @@
 import React from "react"
 import confetti from "canvas-confetti"
 import { useSession } from "next-auth/react"
-import { Button, ButtonProps, buttonVariants } from "~/components/ui/button"
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "~/components/ui/dialog"
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "~/components/ui/alert-dialog"
+import { Button, ButtonProps, buttonVariants } from "~/components/ui/button"
 import { SpotifyContext } from "~/context/spotify-context"
 import { cn, convertImageToBase64 } from "~/lib/utils"
 
@@ -88,29 +90,28 @@ export default function CreatePlaylistButton({
       >
         {loading ? "Creating..." : "Create Playlist"}
       </Button>
-      <Dialog open={isOpen} onOpenChange={() => setIsOpen(!isOpen)}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Yahoo!</DialogTitle>
-            <DialogDescription>
+      <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Yahoo!</AlertDialogTitle>
+            <AlertDialogDescription>
               Check your Spotify for the Alchemelody playlist.
-            </DialogDescription>
-          </DialogHeader>
-          <DialogFooter className="font-sans text-sm">
-            <Button size="sm" variant="ghost" onClick={() => setIsOpen(false)}>
-              Stay on Alchemelody
-            </Button>
-            <a
-              href={playlistUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cn(buttonVariants({ variant: "default", size: "sm" }))}
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel
+              className={cn(buttonVariants({ size: "sm", variant: "outline" }))}
             >
-              Open Spotify
-            </a>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+              Stay on Alchemelody
+            </AlertDialogCancel>
+            <AlertDialogAction className={cn(buttonVariants({ size: "sm" }))}>
+              <a href={playlistUrl} target="_blank" rel="noopener noreferrer">
+                Open Spotify
+              </a>
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </>
   )
 }
