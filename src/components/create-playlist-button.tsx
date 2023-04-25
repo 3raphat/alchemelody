@@ -1,5 +1,6 @@
 import React from "react"
 import confetti from "canvas-confetti"
+import { Loader2 } from "lucide-react"
 import { useSession } from "next-auth/react"
 import {
   AlertDialog,
@@ -90,6 +91,19 @@ export default function CreatePlaylistButton({
       >
         {loading ? "Creating..." : "Create Playlist"}
       </Button>
+      <AlertDialog open={loading} onOpenChange={setLoading}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle className="inline-flex items-center">
+              <Loader2 className="mr-2 animate-spin" />
+              Creating...
+            </AlertDialogTitle>
+            <AlertDialogDescription>
+              Please wait while your playlist is created.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+        </AlertDialogContent>
+      </AlertDialog>
       <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
         <AlertDialogContent>
           <AlertDialogHeader>
