@@ -118,7 +118,10 @@ export default function CreatePlaylistButton({
             >
               Stay on Alchemelody
             </AlertDialogCancel>
-            <AlertDialogAction className={cn(buttonVariants({ size: "sm" }))}>
+            <AlertDialogAction
+              className={cn(buttonVariants({ size: "sm" }))}
+              asChild
+            >
               <a href={playlistUrl} target="_blank" rel="noopener noreferrer">
                 Open Spotify
               </a>
