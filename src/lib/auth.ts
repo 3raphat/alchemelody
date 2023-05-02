@@ -49,9 +49,6 @@ export const authOptions: NextAuthOptions = {
         token.access_token = account.access_token
         token.user = user
         token.user.country = profile.country
-        if (account.expires_at < Date.now()) {
-          token.access_token = account.refresh_token
-        }
       }
       return token
     },
